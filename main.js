@@ -30,6 +30,9 @@ function enableCam(event) {
 }
 function predictWebcam() {
     model.detect(video).then(function (predictions) {
+        predictions.forEach(p => {
+            console.log(p.class + " with coordinates: " + JSON.stringify(p.bbox));
+        })
 
         for (let i = 0; i < children.length; i++) {
             liveView.removeChild(children[i]);
